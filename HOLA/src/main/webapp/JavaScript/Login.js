@@ -6,12 +6,16 @@ function peticion(){
 	$.ajax({
     
     url : 'C_Login',
-    data : { a : a, b:b },
+    data : {a:a, b:b},
     type : 'GET',
   
     success : function(rta) {
        $("#respuesta").append("El resultado del server es: "+rta);
-       console.log(rta)
+       if(rta != null)
+       {
+		   location.href = "GestionLibros.html" 
+	   }
+       alert(rta)
     },
     error : function(xhr, status) {
         alert('Disculpe, existió un problema');
@@ -20,10 +24,6 @@ function peticion(){
         alert('Petición realizada');
     }
 });
-
-
-
-
-
-
 }
+
+

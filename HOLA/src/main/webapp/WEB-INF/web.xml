@@ -19,4 +19,44 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>C_Libros</display-name>
+    <servlet-name>C_Libros</servlet-name>
+    <servlet-class>controlador.C_Libros</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>C_Libros</servlet-name>
+    <url-pattern>/C_Libros</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>C_Registro</display-name>
+    <servlet-name>C_Registro</servlet-name>
+    <servlet-class>controlador.C_Registro</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>C_Registro</servlet-name>
+    <url-pattern>/C_Registro</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>C_Actualizar</display-name>
+    <servlet-name>C_Actualizar</servlet-name>
+    <servlet-class>controlador.C_Actualizar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>C_Actualizar</servlet-name>
+    <url-pattern>/C_Actualizar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>C_actualizar</display-name>
+    <servlet-name>C_actualizar</servlet-name>
+    <servlet-class>controlador.C_actualizar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>C_actualizar</servlet-name>
+    <url-pattern>/C_actualizar</url-pattern>
+  </servlet-mapping>
 </web-app>

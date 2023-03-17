@@ -1,29 +1,35 @@
 package controlador;
 
 import jakarta.servlet.ServletException;
-
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import modelo.Usuario;
+import modelo.Libreria;
+import modelo.Libro;
 import modelo.Login;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
 
 /**
- * Servlet implementation class C_Login
+ * Servlet implementation class C_actualizar
  */
-public class C_Login extends HttpServlet {
+public class C_actualizar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public C_Login() {
+	
+	public Libro libro;
+	public LinkedList<Libro> leo = new LinkedList<Libro>();
+	
+	
+    public C_actualizar() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,18 +38,12 @@ public class C_Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// TODO Auto-generated method stub
-
+		
 		Login l = new Login();
 		String a=request.getParameter("a");
-		String b=request.getParameter("b");
-		Usuario u = l.lecturaFichero(a,b);
-		System.out.print(u.toString());
+		libro = l.lecturalibro(a);
+		leo.add(libro);
 		
-		
-		
-		response.getWriter().append(u.toString());
 	}
 
 	/**
@@ -52,6 +52,26 @@ public class C_Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		Libro la;
+		Libreria l = new Libreria();
+		la = leo.get(0);
+		leo.remove(0);
+		l.add(la.getNombre(),la.getAutor(), 
+				la.getId(), la.getCategoria(), 
+				la.getCantidad(),la.getUrl());
+		
+		Gson gson = new Gson();
+		
+		if(la != null)
+		{
+			response.getWriter().append(gson.toJson(la));
+		}
+		
+	}
+	
+	@Override
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
 	}
 
